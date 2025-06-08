@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>余俊辉 - 导演/编导 | 交互式简历</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral Harmony -->
+    <!-- Application Structure Plan: The SPA is designed as a personal branding showcase. It starts with a strong "Hero" section (自我评价) to immediately convey value. This is followed by a "Dashboard" of Core Competencies using visually engaging stat cards. The main content is a vertical, interactive "Career Timeline" which allows users to click on each job to see detailed accomplishments, making the experience exploratory rather than a flat read. A "Skills & Awards" section uses a dynamic radar chart and structured lists for quick assessment. This structure was chosen to guide recruiters from a high-level value proposition to detailed evidence in a compelling narrative flow, maximizing engagement and information retention. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Core Competencies -> Goal: Highlight key strengths quickly -> Viz/Method: Interactive stat cards (HTML/CSS/Tailwind) -> Interaction: Hover effects to draw attention -> Justification: More engaging and digestible than a bulleted list.
+        - Report Info: Work History -> Goal: Showcase career progression and achievements -> Viz/Method: Vertical Interactive Timeline (HTML/CSS/Tailwind + JS) -> Interaction: Clicking on a timeline entry reveals detailed information in a modal or an adjacent panel, keeping the main view clean. -> Justification: Transforms a standard list into an engaging, explorable journey.
+        - Report Info: Skills & Awards -> Goal: Quantify and categorize abilities -> Viz/Method: Radar Chart for skills (Chart.js), structured list for awards. -> Interaction: Chart tooltips on hover. -> Justification: A radar chart provides a quick, holistic view of skill balance. Lists are clear for factual information like awards.
+        - Report Info: Key Metrics (GMV, Fan Growth) -> Goal: Emphasize business impact -> Viz/Method: Integrated directly into timeline descriptions with bolded text and icons (HTML/Unicode). -> Justification: Placing metrics in context with the work that generated them is more powerful than listing them separately.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f8f7f4;
+            color: #3d3d3d;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #d1c4b0;
+            border: 2px solid #f8f7f4;
+            z-index: 1;
+        }
+        .timeline-item.active::before {
+            background-color: #a88b60;
+        }
+        .timeline-line {
+            position: absolute;
+            left: -15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #e5e0d7;
+        }
+        .chart-container {
+            position: relative; 
+            width: 100%; 
+            max-width: 450px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#a88b60]">余俊辉</h1>
+            <p class="mt-2 text-xl md:text-2xl text-gray-600">导演 / 编导</p>
+            <div class="mt-6 flex justify-center items-center space-x-6 text-gray-500">
+                <span><a href="tel:18629156907" class="hover:text-[#a88b60]">186-2915-6907</a></span>
+                <span class="text-gray-300">|</span>
+                <span><a href="mailto:18691848329@163.com" class="hover:text-[#a88b60]">18691848329@163.com</a></span>
+                <span class="text-gray-300">|</span>
+                <span>上海</span>
+            </div>
+        </header>
+
+        <section id="about" class="bg-white/50 rounded-2xl p-8 md:p-12 shadow-sm mb-16 backdrop-blur-sm">
+            <h2 class="text-2xl font-bold text-center mb-6 text-[#a88b60]">自我评价</h2>
+            <p class="text-center max-w-3xl mx-auto text-gray-700 leading-relaxed">
+                5年影视内容行业经验，是一位兼具国际视野的获奖导演与深谙商业增长的品牌服务者。擅长将电影级叙事手法融入商业视频，通过数据驱动的创意策略，曾主导团队实现千万级GMV增长。具备从0到1孵化IP、管理15人团队及掌控全案的能力，寻求能将艺术创意与商业价值最大化的导演/编导岗位。
+            </p>
+        </section>
+
+        <section id="competencies" class="mb-16">
+            <h2 class="text-2xl font-bold text-center mb-8 text-[#a88b60]">核心竞争力</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    <div class="text-4xl mb-3 text-[#a88b60]">🏆</div>
+                    <h3 class="font-bold text-lg">国际获奖导演</h3>
+                    <p class="text-sm text-gray-600 mt-2">戛纳、纽约电影节奖项获得者，精通专业视觉叙事。</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow duration-300">
+                     <div class="text-4xl mb-3 text-[#a88b60]">🚀</div>
+                    <h3 class="font-bold text-lg">商业增长驱动者</h3>
+                    <p class="text-sm text-gray-600 mt-2">内容策略驱动周均GMV 50-80W，实现商业价值闭环。</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow duration-300">
+                     <div class="text-4xl mb-3 text-[#a88b60]">🏢</div>
+                    <h3 class="font-bold text-lg">一线品牌操盘手</h3>
+                    <p class="text-sm text-gray-600 mt-2">服务百雀羚、欧莱雅等，熟悉TVC、千川全案策略。</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-lg transition-shadow duration-300">
+                     <div class="text-4xl mb-3 text-[#a88b60]">🧠</div>
+                    <h3 class="font-bold text-lg">全流程项目领袖</h3>
+                    <p class="text-sm text-gray-600 mt-2">管理15人团队，掌控从创意到交付的全流程。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="mb-16">
+            <h2 class="text-2xl font-bold text-center mb-12 text-[#a88b60]">职业生涯路径</h2>
+            <div class="md:flex md:space-x-12">
+                <div class="md:w-1/3 mb-12 md:mb-0">
+                    <div id="timeline-nav" class="relative pl-5">
+                         <div class="timeline-line"></div>
+                    </div>
+                </div>
+                <div class="md:w-2/3">
+                    <div id="timeline-details" class="bg-white rounded-2xl p-8 shadow-sm transition-all duration-500 min-h-[300px]">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills-awards" class="bg-white/50 rounded-2xl p-8 md:p-12 shadow-sm backdrop-blur-sm">
+             <h2 class="text-2xl font-bold text-center mb-12 text-[#a88b60]">专业技能与荣誉</h2>
+             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                 <div>
+                     <h3 class="font-bold text-xl text-center mb-4 text-gray-700">综合能力雷达图</h3>
+                     <div class="chart-container">
+                        <canvas id="skillsRadarChart"></canvas>
+                     </div>
+                 </div>
+                 <div>
+                    <div class="mb-8">
+                         <h3 class="font-bold text-xl mb-4 text-gray-700">主要奖项</h3>
+                         <ul class="space-y-2 text-gray-600">
+                            <li><span class="font-semibold text-[#a88b60]">●</span> 2024年戛纳国际电影节最佳独立短片奖</li>
+                             <li><span class="font-semibold text-[#a88b60]">●</span> 2024年纽约国际电影节最佳短片奖</li>
+                             <li><span class="font-semibold text-[#a88b60]">●</span> 入围瑞典电影奖最佳短片及最佳导演</li>
+                             <li><span class="font-semibold text-[#a88b60]">●</span> 入围上海国际短片周最佳导演</li>
+                         </ul>
+                    </div>
+                    <div>
+                         <h3 class="font-bold text-xl mb-4 text-gray-700">作品集</h3>
+                         <a href="https://pan.baidu.com/s/1xxxxxxx" target="_blank" class="inline-block bg-[#a88b60] text-white font-bold py-3 px-6 rounded-lg hover:bg-opacity-90 transition-colors">
+                            在线作品预览 (提取码: pjx5)
+                         </a>
+                    </div>
+                 </div>
+             </div>
+        </section>
+
+        <footer class="text-center mt-16 text-gray-500 text-sm">
+            <p>&copy; 2025 余俊辉. All Rights Reserved.</p>
+            <p class="mt-1">交互式简历由 Gemini 构建</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const experienceData = [
+            {
+                company: "上海思悦智美公关顾问有限公司",
+                title: "导演/编导",
+                period: "2023.11 - 至今",
+                details: [
+                    "<strong>IP账号从0到1孵化：</strong>独立负责公司创始人IP账号的整体策划、内容制作与运营。通过打造以女性成长与生活美学为核心的访谈节目，成功构建了具有影响力的内容矩阵。",
+                    "<strong>商业转化闭环：</strong>通过精准的内容策略与社群导流，有效提升了代理品牌的市场认知度与线下转化率，实现了从内容曝光到商业变现的完整闭环。",
+                    "<strong>数据成果：</strong>旗下账号在抖音及视频号累计播放量<strong>破百万</strong>，实现粉丝<strong>净增长3w+</strong>。"
+                ]
+            },
+            {
+                company: "上海剧星传媒股份有限公司",
+                title: "资深编导",
+                period: "2024.03 - 2024.07",
+                details: [
+                    "<strong>千川内容优化：</strong>作为千川小组负责人，主导了<strong>星巴克、欧莱雅、百雀羚</strong>等品牌的千川视频创意与迭代优化，有效提升了投放素材的点击与转化效果。",
+                    "<strong>明星合作项目：</strong>执导“纳爱斯 x 张博恒”明星种草宣传片，高效协同多方资源，确保项目从创意到执行的顺利落地。",
+                    "<strong>整合创意方案：</strong>深入洞察客户需求，提供覆盖TVC、微电影、品牌宣传片等形式的整合创意方案，并对项目结构、节奏与成本进行全方位把控。"
+                ]
+            },
+            {
+                company: "内蒙古蒙牛乳业(集团)股份有限公司",
+                title: "导演",
+                period: "2023.06 - 2024.03",
+                details: [
+                    "<strong>GMV核心贡献者：</strong>全面执掌蒙牛集团短视频千川版块，通过“数据洞察-创意优化-内容输出”的敏捷流程，带领团队达成<strong>周均GMV 50-80W</strong>的销售目标。",
+                    "<strong>团队管理与协作：</strong>领导短视频小组高效产出，并作为核心创意人，承接集团跨部门视频需求，获得一致好评。"
+                ]
+            },
+            {
+                company: "重庆安播网络科技有限公司",
+                title: "导演/编导",
+                period: "2021.06 - 2023.05",
+                details: [
+                    "<strong>团队管理与流程搭建：</strong>作为内容主管，管理<strong>15人</strong>团队。通过建立并优化内容生产SOP，显著提升了信息流与千川视频的制作效率与内容质量。",
+                    "<strong>多品牌项目主导：</strong>独立负责<strong>哈药集团、王饱饱、碧生源</strong>等品牌的信息流项目，从策略、创意到交付全程跟进，打造了多个爆款案例。"
+                ]
+            },
+        ];
+
+        const timelineNav = document.getElementById('timeline-nav');
+        const timelineDetails = document.getElementById('timeline-details');
+
+        function updateDetails(index) {
+            const item = experienceData[index];
+            timelineDetails.innerHTML = `
+                <div class="transition-opacity duration-300 opacity-0" id="detail-content">
+                    <p class="text-sm text-gray-500 mb-2">${item.period}</p>
+                    <h3 class="text-2xl font-bold text-[#a88b60]">${item.company}</h3>
+                    <p class="text-lg text-gray-700 mb-6 font-medium">${item.title}</p>
+                    <ul class="space-y-4 text-gray-600 leading-relaxed">
+                        ${item.details.map(d => `<li><span class="text-[#a88b60] mr-2">▪</span>${d}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            setTimeout(() => {
+                document.getElementById('detail-content').classList.remove('opacity-0');
+            }, 50);
+
+            document.querySelectorAll('.timeline-item').forEach((el, i) => {
+                el.classList.toggle('active', i === index);
+            });
+        }
+
+        experienceData.forEach((item, index) => {
+            const navItem = document.createElement('div');
+            navItem.className = 'timeline-item relative cursor-pointer py-4 pl-4 transition-colors duration-300 hover:text-[#a88b60]';
+            navItem.innerHTML = `<h4 class="font-bold">${item.company}</h4><p class="text-sm text-gray-500">${item.title}</p>`;
+            navItem.addEventListener('click', () => updateDetails(index));
+            timelineNav.appendChild(navItem);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (experienceData.length > 0) {
+                updateDetails(0);
+            }
+            
+            const ctx = document.getElementById('skillsRadarChart').getContext('2d');
+            const skillsRadarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['创意与编剧', '导演与执导', '商业策略', '团队管理', '后期制作', '数据分析'],
+                    datasets: [{
+                        label: '综合能力',
+                        data: [9, 9.5, 8.5, 8, 9, 7.5],
+                        backgroundColor: 'rgba(168, 139, 96, 0.2)',
+                        borderColor: 'rgba(168, 139, 96, 1)',
+                        pointBackgroundColor: 'rgba(168, 139, 96, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(168, 139, 96, 1)'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                            grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                            pointLabels: { 
+                                font: { size: 14, family: "'Noto Sans SC', sans-serif" },
+                                color: '#3d3d3d'
+                             },
+                            ticks: {
+                                backdropColor: 'transparent',
+                                color: 'rgba(0, 0, 0, 0.5)',
+                                stepSize: 2
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
