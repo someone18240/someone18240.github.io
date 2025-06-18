@@ -44,8 +44,7 @@ AOS.init({
 });
 
 /**
- * ✨ 初始化粒子背景 (particles.js)
- * 推荐把下面参数根据需要自定义
+ * ✨ 初始化粒子背景 (粒子可用红+青混色)
  */
 particlesJS('particles-js', {
   "particles": {
@@ -53,20 +52,20 @@ particlesJS('particles-js', {
       "value": 80
     },
     "color": {
-      "value": "#FFFFFF"
+      "value": ["#E50914", "#00FFFF"]  // 红 & 青混合
     },
     "shape": {
       "type": "circle"
     },
     "opacity": {
-      "value": 0.3
+      "value": 0.4
     },
     "size": {
       "value": 2
     },
     "line_linked": {
       "enable": true,
-      "distance": 120,
+      "distance": 100,
       "color": "#FFFFFF",
       "opacity": 0.2,
       "width": 1
@@ -89,3 +88,20 @@ particlesJS('particles-js', {
   },
   "retina_detect": true
 });
+
+/**
+ * 🏆 奖项轮播：替代跑马灯，做高端字幕淡入淡出
+ */
+const awards = document.querySelectorAll('.awards-slider span');
+let current = 0;
+
+function showAward() {
+  awards.forEach((el, i) => {
+    el.style.opacity = (i === current) ? '1' : '0';
+  });
+  current = (current + 1) % awards.length;
+}
+
+// 初始化轮播
+showAward();
+setInterval(showAward, 3000);
