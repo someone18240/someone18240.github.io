@@ -1,81 +1,323 @@
-/* ---------- 基础字体 / 颜色 ---------- */
-body{margin:0;background:#0d0d0d;color:#fff;font-family:'Noto Serif SC',serif;overflow-x:hidden}
-h1,h2,h3{font-family:'Playfair Display',serif;margin:0 0 20px 0;letter-spacing:2px}
+/* =======================================================
+   Global resets & base typography
+ ======================================================= */
+html,body{
+  margin:0;
+  padding:0;
+  overflow-x:hidden;          /* 防止任何水平滚动 */
+  background:#0d0d0d;
+  color:#ffffff;
+  font-family:'Noto Serif SC',serif;
+}
+
+/* Headings */
+h1,h2,h3{
+  font-family:'Playfair Display',serif;
+  margin:0 0 20px 0;
+  letter-spacing:2px;
+}
+
+/* Links / buttons base */
 a{color:inherit;text-decoration:none}
+button{
+  background:transparent;
+  color:#ffffff;
+  border:2px solid #E50914;
+  padding:10px 24px;
+  cursor:pointer;
+  font-family:'Bebas Neue',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  transition:all .3s;
+}
+button:hover{
+  background:linear-gradient(90deg,#E50914,#00FFFF);
+  border:none;
+  box-shadow:0 0 12px #00FFFF;
+}
 
-/* ---------- 动效关键帧 ---------- */
-@keyframes float{0%{transform:translateY(0)}100%{transform:translateY(-20px)}}
-@keyframes flash{0%{opacity:1}50%{opacity:0.1}100%{opacity:1}}
-@keyframes pulse{0%{box-shadow:0 0 20px #E50914}100%{box-shadow:0 0 40px #00FFFF}}
-@keyframes shine{0%{transform:translateX(-50%)}100%{transform:translateX(50%)}}
+/* =======================================================
+   Keyframes
+ ======================================================= */
+@keyframes floatHero{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(-25px)}
+}
+@keyframes flash{
+  0%,100%{opacity:1}
+  50%    {opacity:.1}
+}
+@keyframes pulse{
+  0%  {box-shadow:0 0 18px #E50914}
+  100%{box-shadow:0 0 38px #00FFFF}
+}
+@keyframes shine{
+  0%  {transform:translateX(-50%)}
+  100%{transform:translateX(50%)}
+}
 
-/* ---------- 粒子层级 ---------- */
-#particles-js{position:fixed;width:100%;height:100%;z-index:0}
-section,#video-popup{position:relative;z-index:1}
+/* =======================================================
+   Global decorative grain overlay
+ ======================================================= */
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:url('../media/grain.png') repeat;
+  opacity:.08;
+  mix-blend-mode:overlay;
+  pointer-events:none;
+  z-index:2;
+}
 
-/* ---------- Opening ---------- */
-#opening{position:relative;height:100vh;text-align:center}
-#bg-video{position:absolute;width:100%;height:100%;object-fit:cover;filter:grayscale(100%)brightness(.4);z-index:-1}
-.headline{position:relative;top:33%;animation:float 8s ease-in-out infinite alternate}
-.headline h1{font-family:'Bebas Neue',sans-serif;font-size:3.2em;letter-spacing:4px}
+/* =======================================================
+   Particle canvas (z-index:0)
+ ======================================================= */
+#particles-js{
+  position:fixed;
+  inset:0;
+  z-index:0;
+}
+
+/* =======================================================
+   Section separator – subtle cyan gradient bar
+ ======================================================= */
+section:not(:first-of-type)::before{
+  content:'';
+  display:block;
+  width:80px;
+  height:4px;
+  margin:60px auto;
+  background:linear-gradient(90deg,transparent,#00ffff80,transparent);
+}
+
+/* =======================================================
+   01  Hero / Opening
+ ======================================================= */
+#opening{
+  position:relative;
+  height:100vh;
+  text-align:center;
+}
+#bg-video{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:grayscale(100%)brightness(.4);
+  z-index:-1;
+}
+.headline{
+  position:relative;
+  top:33%;
+  animation:floatHero 8s ease-in-out infinite alternate;
+}
+.headline h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:3.2em;
+  letter-spacing:4px;
+  margin:0;
+}
 .headline h1.second{margin-top:-10px}
-.headline h2{font-size:1.1em;color:#ccc;letter-spacing:2px}
-button{background:transparent;border:2px solid #E50914;color:#fff;padding:10px 24px;cursor:pointer;font-family:'Bebas Neue',sans-serif;text-transform:uppercase;letter-spacing:2px;transition:.3s}
-button:hover{background:linear-gradient(90deg,#E50914,#00FFFF);border:none;box-shadow:0 0 12px #00FFFF}
-button.flash{animation:flash .5s}
+.headline h2{
+  font-size:1.15em;
+  color:#cccccc;
+  letter-spacing:2px;
+  margin:12px 0 30px;
+}
+#enter-btn.flash{animation:flash .5s}
 
-.headline button{margin-top:30px}
-
-/* section 分割线 */
-section:not(:first-of-type)::before{content:'';display:block;width:80px;height:4px;margin:60px auto;background:linear-gradient(90deg,transparent,#00ffff80,transparent)}
-
-#about{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;padding:80px 40px;gap:40px;background:linear-gradient(180deg,#111,#000)}
-.about-left img{width:300px;border-radius:8px;filter:grayscale(100%)brightness(1.1)contrast(1.1)}
-.about-right{max-width:700px} /* 放宽 */
+/* =======================================================
+   02  About
+ ======================================================= */
+#about{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:40px;
+  padding:80px 40px;
+  background:linear-gradient(180deg,#111,#000);
+}
+.about-left img{
+  width:300px;
+  border-radius:8px;
+  filter:grayscale(100%)brightness(1.1)contrast(1.1);
+}
+.about-right{
+  max-width:700px;
+}
 .about-right h2{color:#E50914}
-.about-right p strong{font-size:1.3em;color:#E50914}
+.about-right p strong{color:#E50914;font-size:1.25em}
 
-/* ---------- Spotlight ---------- */
-#spotlight{text-align:center;padding:80px 40px;background:linear-gradient(180deg,#220000,#000)}
-.spot-img{width:350px;border-radius:8px;margin:20px 0;box-shadow:0 0 60px #E5091440 inset} /* 柔焦暗红 */
-.awards-slider{position:relative;height:60px;font-size:2.2em;overflow:hidden;margin:20px 0}
-.awards-slider span{position:absolute;width:100%;opacity:0;transition:opacity 1s;text-align:center;text-shadow:0 0 8px #E50914}
-#spotlight button{margin-top:20px}
+/* =======================================================
+   03  Spotlight
+ ======================================================= */
+#spotlight{
+  padding:80px 40px;
+  text-align:center;
+  background:linear-gradient(180deg,#220000,#000);
+}
+.spot-img{
+  width:350px;
+  border-radius:8px;
+  margin:20px 0;
+  box-shadow:0 0 60px #E5091440 inset;   /* 暗红柔焦 */
+}
 
-/* ---------- Works ---------- */
-#works{padding:80px 40px;background:linear-gradient(180deg,#000,#001010)}
-.work-gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:30px}
-.work-card{position:relative;width:250px;cursor:pointer;overflow:hidden;border-radius:8px;transition:transform .3s,box-shadow .3s}
-.work-card img{width:100%;display:block;filter:grayscale(100%);transition:filter .3s}
-.work-card .work-overlay{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);color:#fff;padding:15px;opacity:0;transition:opacity .3s}
-.work-card::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:url('../media/burn.gif') center/cover no-repeat;opacity:0;mix-blend-mode:screen;transition:opacity .3s} /* Film-Burn */
-.work-card:hover{transform:translateY(-5px)scale(1.03);box-shadow:0 10px 30px rgba(0,255,255,.25)}
+/* Awards – static big list */
+.awards-list{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:32px;
+  font-size:2.2em;
+  letter-spacing:1px;
+  text-shadow:0 0 8px #E50914;
+  margin:20px 0 30px;
+}
+.awards-list li{
+  list-style:none;
+}
+
+/* =======================================================
+   04  Works / Gallery
+ ======================================================= */
+#works{
+  padding:80px 40px;
+  background:linear-gradient(180deg,#000,#001010);
+}
+.work-gallery{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:30px;
+}
+.work-card{
+  position:relative;
+  width:250px;
+  border-radius:8px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .3s,box-shadow .3s;
+}
+.work-card img{
+  width:100%;
+  display:block;
+  filter:grayscale(100%);
+  transition:filter .3s;
+}
+.work-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:15px;
+  background:rgba(0,0,0,.7);
+  opacity:0;
+  transition:opacity .3s;
+}
+.work-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url('../media/burn.gif') center/cover no-repeat;
+  opacity:0;
+  mix-blend-mode:screen;
+  transition:opacity .3s;
+}
+.work-card:hover{
+  transform:translateY(-5px)scale(1.03);
+  box-shadow:0 10px 30px rgba(0,255,255,.25);
+}
 .work-card:hover img{filter:grayscale(0)}
 .work-card:hover .work-overlay{opacity:1}
 .work-card:hover::after{opacity:.6}
+.work-overlay h3{margin:5px 0 0;color:#E50914}
 
-/* ---------- Clients ---------- */
-#clients{background:#000;padding:80px 40px;text-align:center}
-.client-list{display:flex;overflow-x:auto;gap:40px;padding-bottom:20px}
-.client-list span,img{flex:0 0 auto;font-size:1.5em;color:#ccc;filter:grayscale(1);transition:.3s}
-.client-list span:hover,img:hover{color:#00FFFF;filter:grayscale(0)}
+/* =======================================================
+   05  Clients
+ ======================================================= */
+#clients{
+  background:#000;
+  padding:80px 40px;
+  text-align:center;
+}
+.client-list{
+  display:flex;
+  overflow-x:auto;
+  gap:40px;
+  padding-bottom:20px;
+}
+.client-list span,
+.client-list img{
+  flex:0 0 auto;
+  font-size:1.5em;
+  filter:grayscale(1);
+  transition:.3s;
+}
+.client-list span:hover,
+.client-list img:hover{
+  filter:grayscale(0);
+  color:#00FFFF;
+}
 
-/* ---------- CTA ---------- */
-#cta{background:#0d0d0d;padding:80px 40px;text-align:center;position:relative;overflow:hidden}
-#cta::before{content:'';position:absolute;top:0;left:-50%;width:200%;height:100%;background:linear-gradient(60deg,transparent,#00ffff26,transparent);animation:shine 10s linear infinite}
-#cta h2{font-size:1.8em;margin-bottom:30px}
-.cta-btn{display:inline-block;background:linear-gradient(90deg,#E50914,#00FFFF);color:#fff;padding:12px 30px;border-radius:30px;font-weight:bold;letter-spacing:2px;animation:pulse 3s infinite alternate;transition:transform .3s}
+/* =======================================================
+   06  CTA
+ ======================================================= */
+#cta{
+  position:relative;
+  overflow:hidden;
+  padding:80px 40px;
+  text-align:center;
+  background:#0d0d0d;
+}
+#cta::before{
+  content:'';
+  position:absolute;
+  top:0;left:-50%;
+  width:200%;height:100%;
+  background:linear-gradient(60deg,transparent,#00ffff26,transparent);
+  animation:shine 10s linear infinite;
+}
+.cta-btn{
+  display:inline-block;
+  background:linear-gradient(90deg,#E50914,#00FFFF);
+  padding:12px 30px;
+  border-radius:30px;
+  font-family:'Bebas Neue',sans-serif;
+  letter-spacing:2px;
+  animation:pulse 3s infinite alternate;
+  transition:transform .3s;
+}
 .cta-btn:hover{transform:scale(1.05)}
-#cta p{margin-top:30px;font-size:1em;color:#888}
+#cta p{margin-top:30px;color:#888}
 
-/* ---------- Video Popup ---------- */
-#video-popup{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);justify-content:center;align-items:center;z-index:9999}
-#video-popup video{width:80%;max-width:900px;border-radius:8px;box-shadow:0 0 20px #000}
+/* =======================================================
+   Video Popup
+ ======================================================= */
+#video-popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+#video-popup video{
+  width:80%;
+  max-width:900px;
+  border-radius:8px;
+  box-shadow:0 0 20px #000;
+}
 
-/* ---------- 按钮基础 & 媒体查询 ---------- */
-button, .cta-btn{font-family:'Bebas Neue',sans-serif;text-transform:uppercase}
-
+/* =======================================================
+   Responsive tweaks
+ ======================================================= */
 @media(max-width:480px){
   .work-card{width:90vw}
   button{padding:12px 28px}
+  .headline h1{font-size:2.2em}
 }
