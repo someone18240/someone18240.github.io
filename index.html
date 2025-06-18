@@ -1,49 +1,68 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>神秘智者 · 导演 / 编导</title>
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<title>余俊辉 · 导演站</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <video id="bgVideo" autoplay muted loop>
+
+<section id="opening">
+  <video autoplay muted loop id="bg-video">
     <source src="media/bg.mp4" type="video/mp4">
   </video>
+  <h1>Confession is light, Killing is freedom.</h1>
+  <button onclick="startExperience()">Enter</button>
+</section>
 
-  <audio id="bgm" src="media/bgm.flac" autoplay loop></audio>
+<section id="about">
+  <img src="media/portrait.jpg" class="portrait">
+  <div class="bio">
+    <p>余俊辉，导演，编导，影像是我与世界的缓冲区。</p>
+    <p>五年实战，从广告到独立短片。</p>
+    <p>拍过星巴克、阿里、美团，也拍过人心里的废墟。</p>
+    <p>电影阅片量 3000+，精通从策划、拍摄到剪辑的全流程。</p>
+    <p>擅长带团队执行复杂项目，抗压，极致追求完成度。</p>
+  </div>
+</section>
 
-  <div id="typewriter"></div>
+<section id="spotlight">
+  <img src="media/posters/kill-a-stranger.jpg" class="spotlight-img">
+  <h2>《杀死陌生人》（2024）</h2>
+  <p>瑞典电影奖、上海国际短片周、戛纳国际电影节、纽约国际电影节最佳短片。</p>
+  <p>一部关于信任与杀戮的诗，一场关于真相与自我的审判。</p>
+  <button onclick="playVideo('media/works/kill-a-stranger.mp4')">点击观看</button>
+</section>
 
-  <section class="poster-wall">
-    <img src="media/posters/poster1.jpg" alt="Poster 1">
-    <img src="media/posters/poster2.jpg" alt="Poster 2">
-    <img src="media/posters/poster3.jpg" alt="Poster 3">
-  </section>
+<section id="works">
+  <div class="work-card" onclick="playVideo('media/works/confession.mp4')">
+    <img src="media/posters/confession.jpg">
+    <h3>《火光中的自白》</h3>
+    <p>入围阿根廷圣克鲁斯国际电影节。</p>
+  </div>
+  <div class="work-card" onclick="playVideo('media/works/starbucks.mp4')">
+    <img src="media/posters/starbucks.jpg">
+    <h3>星巴克广告</h3>
+    <p>品牌蓝V + 千川爆款。</p>
+  </div>
+</section>
 
-  <section class="works">
-    <video controls src="media/works/work1.mp4"></video>
-    <video controls src="media/works/work2.mp4"></video>
-    <video controls src="media/works/work3.mp4"></video>
-  </section>
+<section id="clients">
+  <span>星巴克</span><span>阿里</span><span>美团</span><span>百雀羚</span><span>欧莱雅</span><span>哈药集团</span><span>蒙牛</span><span>罗技</span>
+</section>
 
-  <section class="clients">
-    <h2>合作客户</h2>
-    <div class="client">星巴克</div>
-    <div class="client">阿里</div>
-    <div class="client">美团</div>
-    <div class="client">百雀羚</div>
-  </section>
+<section id="cta">
+  <h2>🎥 想让我拍一场你心里的电影吗？</h2>
+  <a href="mailto:18691848329@163.com">立即联系</a>
+  <p>「像戈达尔一样拆解世界，像萨特一样质问自己。」</p>
+</section>
 
-  <section class="contact">
-    <h2>联系我</h2>
-    <p>Email: <a href="mailto:18691848329@163.com">18691848329@163.com</a></p>
-    <p>电话: 18629156907</p>
-  </section>
+<div id="video-popup" onclick="closeVideo()">
+  <video controls id="popup-video"></video>
+</div>
 
-  <footer>
-    &copy; 2025 神秘智者 | 「像戈达尔一样拆解世界，像萨特一样怀疑自己。」
-  </footer>
+<audio id="bgm" src="media/bgm.flac"></audio>
 
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
