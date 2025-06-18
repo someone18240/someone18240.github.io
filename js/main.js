@@ -1,34 +1,57 @@
+/* ======================================================
+   1. 进入按钮：播放音乐 + 平滑滚动 + 按钮闪白
+ ====================================================== */
 function startExperience(){
   const bgm=document.getElementById('bgm');
   bgm.play().catch(()=>console.log('等待用户交互'));
   document.getElementById('about').scrollIntoView({behavior:'smooth'});
-  document.getElementById('enter-btn').classList.add('flash');         // 按钮闪白
-  setTimeout(()=>document.getElementById('enter-btn').classList.remove('flash'),500);
+  // flash btn
+  const btn=document.getElementById('enter-btn');
+  btn.classList.add('flash');
+  setTimeout(()=>btn.classList.remove('flash'),500);
 }
 
+/* ======================================================
+   2. Video 弹层
+ ====================================================== */
 function playVideo(src){
-  const p=document.getElementById('video-popup'),v=document.getElementById('popup-video');
-  v.src=src;p.style.display='flex';v.play();
+  const pop=document.getElementById('video-popup');
+  const vid=document.getElementById('popup-video');
+  vid.src=src;
+  pop.style.display='flex';
+  vid.play();
 }
 function closeVideo(){
-  const p=document.getElementById('video-popup'),v=document.getElementById('popup-video');
-  v.pause();v.currentTime=0;p.style.display='none';
+  const pop=document.getElementById('video-popup');
+  const vid=document.getElementById('popup-video');
+  vid.pause();
+  vid.currentTime=0;
+  pop.style.display='none';
 }
 
-/* AOS */
+/* ======================================================
+   3. AOS 滚动动画初始化
+ ====================================================== */
 AOS.init({duration:1000,once:true});
 
-/* 彩色粒子 */
+/* ======================================================
+   4. 彩色粒子背景
+ ====================================================== */
 particlesJS('particles-js',{
-  particles:{number:{value:80},color:{value:['#E50914','#00FFFF']},
-  shape:{type:'circle'},opacity:{value:.4},size:{value:2},
-  line_linked:{enable:true,distance:100,color:'#FFFFFF',opacity:.2,width:1},
-  move:{enable:true,speed:1.5}},
+  particles:{
+    number:{value:80},
+    color:{value:['#E50914','#00FFFF']},
+    shape:{type:'circle'},
+    opacity:{value:.4},
+    size:{value:2},
+    line_linked:{enable:true,distance:100,color:'#ffffff',opacity:.2,width:1},
+    move:{enable:true,speed:1.5}
+  },
   interactivity:{detect_on:'canvas',events:{onhover:{enable:false}}},
   retina_detect:true
 });
 
-/* 奖项字幕淡入轮播 */
-const awards=[...document.querySelectorAll('.awards-slider span')];let cur=0;
-function showAward(){awards.forEach((el,i)=>el.style.opacity=i===cur?'1':'0');cur=(cur+1)%awards.length;}
-showAward();setInterval(showAward,4000);
+/* ======================================================
+   5. Awards 静态大字号列表（无需 JS 轮播）
+   ——若后续想要淡入淡出循环，可把这里改回 setInterval 逻辑
+ ====================================================== */
