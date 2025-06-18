@@ -1,102 +1,120 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>余俊辉 · Director's Cut</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+  <!-- AOS 动效库 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
+  <!-- 粒子背景容器 -->
+  <div id="particles-js"></div>
 
-<!-- 开场：背景视频 + 双语宣言 + 进入按钮 -->
-<section id="opening">
-  <video autoplay muted loop id="bg-video">
-    <source src="media/bg.mp4" type="video/mp4">
-  </video>
-  <div class="headline">
-    <h1>Confession is light,<br>Killing is freedom.</h1>
-    <h2>忏悔是光，杀戮是自由。</h2>
-    <button onclick="startExperience()">进入我的影像</button>
-  </div>
-</section>
-
-<!-- About：导演自述 -->
-<section id="about">
-  <div class="about-left">
-    <img src="media/portrait.jpg" alt="余俊辉肖像">
-  </div>
-  <div class="about-right">
-    <h2>余俊辉 Director / Filmmaker</h2>
-    <p>我用影像抵达真相。</p>
-    <p>我用怀疑撕开幻觉。</p>
-    <p>五年实践，三千部影片的沉思。</p>
-    <p>我拍星巴克与阿里，也拍我们心里杀死的陌生人。</p>
-    <p>我把广告拍成诗，把短片拍成证词。</p>
-  </div>
-</section>
-
-<!-- Spotlight：杀死陌生人 -->
-<section id="spotlight">
-  <h2>Spotlight / 代表作</h2>
-  <img src="media/posters/kill-a-stranger.jpg" alt="杀死陌生人封面">
-  <h3>《杀死陌生人》（2024）</h3>
-  <div class="awards">
-    <span>🏆 瑞典电影奖最佳短片</span>
-    <span>🏆 上海国际短片周最佳导演</span>
-    <span>🏆 戛纳国际电影节最佳独立短片</span>
-    <span>🏆 纽约国际电影节最佳短片</span>
-  </div>
-  <p>一部关于信任与杀戮的诗，一场关于真相与自我的审判。</p>
-  <button onclick="playVideo('media/works/kill-a-stranger.mp4')">点击观看完整短片</button>
-</section>
-
-<!-- Works：其他作品墙 -->
-<section id="works">
-  <h2>Works / 作品展厅</h2>
-  <div class="work-gallery">
-    <div class="work-card" onclick="playVideo('media/works/confession.mp4')">
-      <img src="media/posters/confession.jpg">
-      <h3>《火光中的自白》</h3>
-      <p>入围阿根廷圣克鲁斯国际电影节</p>
+  <!-- Opening -->
+  <section id="opening">
+    <video autoplay muted loop id="bg-video">
+      <source src="media/bg.mp4" type="video/mp4">
+    </video>
+    <div class="headline">
+      <h1>Confession is light,<br>Killing is freedom.</h1>
+      <h2>忏悔是光，杀戮是自由。</h2>
+      <button onclick="startExperience()">进入我的影像</button>
     </div>
-    <div class="work-card" onclick="playVideo('media/works/starbucks.mp4')">
-      <img src="media/posters/starbucks.jpg">
-      <h3>星巴克广告</h3>
-      <p>品牌蓝V + 千川爆款</p>
+  </section>
+
+  <!-- About -->
+  <section id="about" data-aos="fade-up">
+    <div class="about-left">
+      <img src="media/portrait.jpg" alt="余俊辉肖像">
     </div>
-    <!-- 可继续添加 -->
+    <div class="about-right">
+      <h2>余俊辉 Director / Filmmaker</h2>
+      <p>我用影像抵达真相。</p>
+      <p>我用怀疑撕开幻觉。</p>
+      <p>五年实践，三千部影片的沉思。</p>
+      <p>我拍星巴克与阿里，也拍我们心里杀死的陌生人。</p>
+      <p>我把广告拍成诗，把短片拍成证词。</p>
+    </div>
+  </section>
+
+  <!-- Spotlight -->
+  <section id="spotlight" data-aos="fade-up">
+    <h2>Spotlight / 代表作</h2>
+    <img src="media/posters/kill-a-stranger.jpg" alt="杀死陌生人封面">
+    <h3>《杀死陌生人》（2024）</h3>
+    <div class="awards-marquee">
+      <div class="awards-track">
+        <span>🏆 瑞典电影奖最佳短片</span>
+        <span>🏆 上海国际短片周最佳导演</span>
+        <span>🏆 戛纳国际电影节最佳独立短片</span>
+        <span>🏆 纽约国际电影节最佳短片</span>
+        <span>🏆 瑞典电影奖最佳短片</span> <!-- 重复1次形成循环 -->
+      </div>
+    </div>
+    <p>一部关于信任与杀戮的诗，一场关于真相与自我的审判。</p>
+    <button onclick="playVideo('media/works/kill-a-stranger.mp4')">点击观看完整短片</button>
+  </section>
+
+  <!-- Works -->
+  <section id="works" data-aos="fade-up">
+    <h2>Works / 作品展厅</h2>
+    <div class="work-gallery">
+      <div class="work-card" onclick="playVideo('media/works/confession.mp4')">
+        <img src="media/posters/confession.jpg">
+        <div class="work-overlay">
+          <h3>《火光中的自白》</h3>
+          <p>入围阿根廷圣克鲁斯国际电影节</p>
+        </div>
+      </div>
+      <div class="work-card" onclick="playVideo('media/works/starbucks.mp4')">
+        <img src="media/posters/starbucks.jpg">
+        <div class="work-overlay">
+          <h3>星巴克广告</h3>
+          <p>品牌蓝V + 千川爆款</p>
+        </div>
+      </div>
+      <!-- 更多作品可继续添加 -->
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section id="clients" data-aos="fade-up">
+    <h2>Clients / 合作客户</h2>
+    <div class="client-list">
+      <span>Starbucks</span>
+      <span>阿里</span>
+      <span>美团</span>
+      <span>百雀羚</span>
+      <span>欧莱雅</span>
+      <span>哈药集团</span>
+      <span>蒙牛</span>
+      <span>罗技</span>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" data-aos="fade-up">
+    <h2>🎥 想让我拍一场你心里的电影吗？</h2>
+    <a href="mailto:18691848329@163.com" class="cta-btn">立即联系</a>
+    <p>「像戈达尔一样拆解世界，像萨特一样质问自己。」</p>
+  </section>
+
+  <!-- 视频浮层 -->
+  <div id="video-popup" onclick="closeVideo()">
+    <video controls id="popup-video"></video>
   </div>
-</section>
 
-<!-- Clients：合作客户 -->
-<section id="clients">
-  <h2>Clients / 合作客户</h2>
-  <div class="client-list">
-    <span>Starbucks</span>
-    <span>阿里</span>
-    <span>美团</span>
-    <span>百雀羚</span>
-    <span>欧莱雅</span>
-    <span>哈药集团</span>
-    <span>蒙牛</span>
-    <span>罗技</span>
-  </div>
-</section>
+  <!-- 背景音乐 -->
+  <audio id="bgm" src="media/bgm.flac"></audio>
 
-<!-- CTA：结尾联系 -->
-<section id="cta">
-  <h2>🎥 想让我拍一场你心里的电影吗？</h2>
-  <a href="mailto:18691848329@163.com" class="cta-btn">立即联系</a>
-  <p>「像戈达尔一样拆解世界，像萨特一样质问自己。」</p>
-</section>
-
-<!-- Video 浮层 -->
-<div id="video-popup" onclick="closeVideo()">
-  <video controls id="popup-video"></video>
-</div>
-
-<!-- 背景音乐 -->
-<audio id="bgm" src="media/bgm.flac"></audio>
-
-<script src="js/main.js"></script>
+  <!-- 粒子库 + AOS 动效 + 自定义交互 -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
