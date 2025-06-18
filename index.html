@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>余俊辉 · Director's Cut</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- 高级字体：Playfair + Bebas + 思源宋 -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- 字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
-  <!-- AOS 动效库 -->
+  <!-- AOS 动效 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="css/style.css">
+  <!-- SEO / 分享卡 -->
+  <meta property="og:title" content="余俊辉 · Director / Filmmaker">
+  <meta property="og:description" content="把广告拍成诗，把短片拍成证词。导演余俊辉个人影像作品站。">
+  <meta property="og:image" content="https://someone18240.github.io/media/posters/kill-a-stranger.jpg">
 </head>
 
 <body>
-  <!-- 粒子背景容器 -->
+  <!-- 粒子背景 -->
   <div id="particles-js"></div>
 
   <!-- Opening -->
@@ -21,8 +25,9 @@
       <source src="media/bg.mp4" type="video/mp4">
     </video>
     <div class="headline">
-      <h1>Confession is light,<br>Killing is freedom.</h1>
-      <h2>忏悔是光，杀戮是自由。</h2>
+      <h1>CONFESSION IS LIGHT</h1>
+      <h1 class="second">KILLING IS FREEDOM</h1>
+      <h2>忏悔是光 杀戮是自由</h2>
       <button onclick="startExperience()">进入我的影像</button>
     </div>
   </section>
@@ -46,13 +51,15 @@
   <section id="spotlight" data-aos="fade-up">
     <h2>Spotlight / 代表作</h2>
     <img src="media/posters/kill-a-stranger.jpg" alt="杀死陌生人封面">
-    <h3>《杀死陌生人》（2024）</h3>
+    <h3>《杀死陌生人》 (2024)</h3>
+
     <div class="awards-slider">
-      <span>🏆 瑞典电影奖最佳短片</span>
-      <span>🏆 上海国际短片周最佳导演</span>
-      <span>🏆 戛纳国际电影节最佳独立短片</span>
-      <span>🏆 纽约国际电影节最佳短片</span>
+      <span>🏆 瑞典电影奖 最佳短片</span>
+      <span>🏆 上海国际短片周 最佳导演</span>
+      <span>🏆 戛纳国际电影节 最佳独立短片</span>
+      <span>🏆 纽约国际电影节 最佳短片</span>
     </div>
+
     <p>一部关于信任与杀戮的诗，一场关于真相与自我的审判。</p>
     <button onclick="playVideo('media/works/kill-a-stranger.mp4')">点击观看完整短片</button>
   </section>
@@ -68,13 +75,15 @@
           <p>入围阿根廷圣克鲁斯国际电影节</p>
         </div>
       </div>
+
       <div class="work-card" onclick="playVideo('media/works/starbucks.mp4')">
         <img src="media/posters/starbucks.jpg">
         <div class="work-overlay">
           <h3>星巴克广告</h3>
-          <p>品牌蓝V + 千川爆款</p>
+          <p>品牌蓝 V + 千川爆款</p>
         </div>
       </div>
+      <!-- 按需继续添加 -->
     </div>
   </section>
 
@@ -82,14 +91,8 @@
   <section id="clients" data-aos="fade-up">
     <h2>Clients / 合作客户</h2>
     <div class="client-list">
-      <span>Starbucks</span>
-      <span>阿里</span>
-      <span>美团</span>
-      <span>百雀羚</span>
-      <span>欧莱雅</span>
-      <span>哈药集团</span>
-      <span>蒙牛</span>
-      <span>罗技</span>
+      <span>Starbucks</span><span>阿里</span><span>美团</span><span>百雀羚</span>
+      <span>欧莱雅</span><span>哈药集团</span><span>蒙牛</span><span>罗技</span>
     </div>
   </section>
 
@@ -100,7 +103,7 @@
     <p>「像戈达尔一样拆解世界，像萨特一样质问自己。」</p>
   </section>
 
-  <!-- 视频浮层 -->
+  <!-- Video Pop-up -->
   <div id="video-popup" onclick="closeVideo()">
     <video controls id="popup-video"></video>
   </div>
@@ -108,7 +111,7 @@
   <!-- 背景音乐 -->
   <audio id="bgm" src="media/bgm.flac"></audio>
 
-  <!-- 粒子库 + AOS + 自定义交互 -->
+  <!-- 粒子 & AOS & 自定义 -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="js/main.js"></script>
