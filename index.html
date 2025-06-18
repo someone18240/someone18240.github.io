@@ -4,11 +4,16 @@
   <meta charset="UTF-8">
   <title>余俊辉 · Director's Cut</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <!-- 字体 -->
+
+  <!-- 高级字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
   <!-- AOS 动效 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+
+  <!-- 站内样式 -->
   <link rel="stylesheet" href="css/style.css">
+
   <!-- SEO / 分享卡 -->
   <meta property="og:title" content="余俊辉 · Director / Filmmaker">
   <meta property="og:description" content="把广告拍成诗，把短片拍成证词。导演余俊辉个人影像作品站。">
@@ -24,11 +29,12 @@
     <video autoplay muted loop id="bg-video">
       <source src="media/bg.mp4" type="video/mp4">
     </video>
+
     <div class="headline">
       <h1>CONFESSION IS LIGHT</h1>
       <h1 class="second">KILLING IS FREEDOM</h1>
       <h2>忏悔是光 杀戮是自由</h2>
-      <button onclick="startExperience()">进入我的影像</button>
+      <button id="enter-btn" onclick="startExperience()">进入我的影像</button>
     </div>
   </section>
 
@@ -50,7 +56,7 @@
   <!-- Spotlight -->
   <section id="spotlight" data-aos="fade-up">
     <h2>Spotlight / 代表作</h2>
-    <img src="media/posters/kill-a-stranger.jpg" alt="杀死陌生人封面">
+    <img src="media/posters/kill-a-stranger.jpg" alt="杀死陌生人封面" class="spot-img">
     <h3>《杀死陌生人》 (2024)</h3>
 
     <div class="awards-slider">
@@ -67,6 +73,7 @@
   <!-- Works -->
   <section id="works" data-aos="fade-up">
     <h2>Works / 作品展厅</h2>
+
     <div class="work-gallery">
       <div class="work-card" onclick="playVideo('media/works/confession.mp4')">
         <img src="media/posters/confession.jpg">
@@ -83,7 +90,7 @@
           <p>品牌蓝 V + 千川爆款</p>
         </div>
       </div>
-      <!-- 按需继续添加 -->
+      <!-- 继续添加更多作品卡片 -->
     </div>
   </section>
 
@@ -91,6 +98,7 @@
   <section id="clients" data-aos="fade-up">
     <h2>Clients / 合作客户</h2>
     <div class="client-list">
+      <!-- 上传 logo PNG 后，把文字替换成 <img src="media/clients/starbucks.png"> -->
       <span>Starbucks</span><span>阿里</span><span>美团</span><span>百雀羚</span>
       <span>欧莱雅</span><span>哈药集团</span><span>蒙牛</span><span>罗技</span>
     </div>
@@ -103,7 +111,7 @@
     <p>「像戈达尔一样拆解世界，像萨特一样质问自己。」</p>
   </section>
 
-  <!-- Video Pop-up -->
+  <!-- Video Popup -->
   <div id="video-popup" onclick="closeVideo()">
     <video controls id="popup-video"></video>
   </div>
@@ -111,7 +119,7 @@
   <!-- 背景音乐 -->
   <audio id="bgm" src="media/bgm.flac"></audio>
 
-  <!-- 粒子 & AOS & 自定义 -->
+  <!-- 粒子 & AOS & 自定义交互 -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script src="js/main.js"></script>
