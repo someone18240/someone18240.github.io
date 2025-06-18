@@ -1,131 +1,173 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>余俊辉 · Director's Cut</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <!-- 字体：Bebas（英标题）＋Playfair（英正文）＋思源宋（中文） -->
+  <!-- 字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- AOS 滚动动效 -->
+  <!-- AOS & Glide -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
   <!-- 主样式 -->
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- 分享卡片（社媒 / 微信） -->
-  <meta property="og:title"       content="余俊辉 · Director / Filmmaker">
+  <!-- 分享卡 -->
+  <meta property="og:title" content="余俊辉 · Director / Filmmaker">
   <meta property="og:description" content="把广告拍成诗，把短片拍成证词。">
-  <meta property="og:image"       content="https://someone18240.github.io/media/posters/kill-a-stranger.jpg">
+  <meta property="og:image" content="https://someone18240.github.io/media/posters/kill-a-stranger.jpg">
 </head>
 
 <body>
-  <!-- █ 粒子背景 (Canvas) -->
-  <div id="particles-js"></div>
+<div id="particles-js"></div>
 
-  <!-- █ 01 Opening / Hero -->
-  <section id="opening">
-    <video id="bg-video" autoplay muted loop>
-      <source src="media/bg.mp4" type="video/mp4">
-    </video>
+<!-- 01 Hero -->
+<section id="opening">
+  <video id="bg-video" autoplay muted loop>
+    <source src="media/bg.mp4" type="video/mp4">
+  </video>
+  <div class="headline">
+    <h1 class="first">CONFESSION IS LIGHT</h1>
+    <h1 class="second">KILLING IS FREEDOM</h1>
+    <h2>忏悔是光 · 杀戮是自由</h2>
+    <button id="enter-btn" onclick="startExperience()">进入我的影像</button>
+  </div>
+</section>
 
-    <div class="headline">
-      <h1 class="first">CONFESSION&nbsp;IS&nbsp;LIGHT</h1>
-      <h1 class="second">KILLING&nbsp;IS&nbsp;FREEDOM</h1>
-      <h2>忏悔是光&nbsp;·&nbsp;杀戮是自由</h2>
-      <button id="enter-btn" onclick="startExperience()">进入我的影像</button>
+<!-- 02 About -->
+<section id="about" data-aos="fade-up">
+  <!-- 竖排姓名 & 胶片花絮 -->
+  <div class="about-tag">余<br>俊<br>辉</div>
+  <video class="about-broll" src="media/broll.mp4" autoplay muted loop></video>
+
+  <div class="about-left">
+    <img src="media/portrait.jpg" alt="余俊辉肖像">
+  </div>
+  <div class="about-right">
+    <h2>余俊辉  Director / Filmmaker</h2>
+    <p><strong>我用影像抵达真相。</strong></p>
+    <p>我用怀疑撕开幻觉。</p>
+    <p>五年实践，三千部影片沉思。</p>
+    <p>我拍星巴克与阿里，也拍我们心里杀死的陌生人。</p>
+    <p>我把广告拍成诗，把短片拍成证词。</p>
+    <p class="manifesto">导演宣言：影像不是糖衣，它必须像手术刀一样锋利，剖开观众体内潜藏的真相，然后缝合，让他们带着新的疤回到生活。</p>
+  </div>
+</section>
+
+<!-- 03 年表 / Awards Timeline -->
+<section id="timeline" data-aos="fade-up">
+  <h2>Timeline / 成长轨迹</h2>
+  <div class="time-track">
+    <div class="time-node"><span class="year">2019</span><p>北京枫花园汽车影院直播</p></div>
+    <div class="time-node"><span class="year">2021</span><p>《火光中的自白》 阿根廷圣克鲁斯提名</p></div>
+    <div class="time-node"><span class="year">2023</span><p>蒙牛短视频 GMV 80W/周</p></div>
+    <div class="time-node"><span class="year">2024</span><p>《杀死陌生人》横扫四大电影节</p></div>
+  </div>
+</section>
+
+<!-- 04 Spotlight -->
+<section id="spotlight" data-aos="fade-up">
+  <h2>Spotlight / 代表作</h2>
+  <img class="spot-img" src="media/posters/kill-a-stranger.jpg" alt="">
+  <h3>《杀死陌生人》 (2024)</h3>
+
+  <ul class="awards-list">
+    <li>🏆 瑞典电影奖 最佳短片</li>
+    <li>🏆 上海国际短片周 最佳导演</li>
+    <li>🏆 戛纳国际电影节 最佳独立短片</li>
+    <li>🏆 纽约国际电影节 最佳短片</li>
+  </ul>
+
+  <p class="logline"><em>Logline：</em> 当信任沦为毒药，杀戮才是解药。</p>
+  <p class="synopsis">影片通过一场陌生人互杀实验，探讨人类在极端环境下交换良知与生存本能的边界。单镜头、自然光、纪录式调度，8 分钟在场感。</p>
+
+  <!-- 幕后剧照 Glide -->
+  <div class="glide bts-slider">
+    <div data-glide-el="track" class="glide__track">
+      <ul class="glide__slides">
+        <li class="glide__slide"><img src="media/behind/ksmr1.jpg"></li>
+        <li class="glide__slide"><img src="media/behind/ksmr2.jpg"></li>
+        <li class="glide__slide"><img src="media/behind/ksmr3.jpg"></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- █ 02 About -->
-  <section id="about" data-aos="fade-up">
-    <div class="about-left">
-      <img src="media/portrait.jpg" alt="余俊辉肖像">
-    </div>
-    <div class="about-right">
-      <h2>余俊辉  Director / Filmmaker</h2>
-      <p><strong>我用影像抵达真相。</strong></p>
-      <p>我用怀疑撕开幻觉。</p>
-      <p>五年实践，三千部影片沉思。</p>
-      <p>我拍星巴克与阿里，也拍我们心里杀死的陌生人。</p>
-      <p>我把广告拍成诗，把短片拍成证词。</p>
-    </div>
-  </section>
-
-  <!-- █ 03 代表作 Spotlight -->
-  <section id="spotlight" data-aos="fade-up">
-    <h2>Spotlight / 代表作</h2>
-    <img class="spot-img" src="media/posters/kill-a-stranger.jpg" alt="杀死陌生人">
-    <h3>《杀死陌生人》 (2024)</h3>
-
-    <!-- 大字号静态奖项列表 -->
-    <ul class="awards-list">
-      <li>🏆 瑞典电影奖 最佳短片</li>
-      <li>🏆 上海国际短片周 最佳导演</li>
-      <li>🏆 戛纳国际电影节 最佳独立短片</li>
-      <li>🏆 纽约国际电影节 最佳短片</li>
-    </ul>
-
-    <p>一部关于信任与杀戮的诗，一场关于真相与自我的审判。</p>
-    <button onclick="playVideo('media/works/kill-a-stranger.mp4')">点击观看完整短片</button>
-  </section>
-
-  <!-- █ 04 Works / Gallery -->
-  <section id="works" data-aos="fade-up">
-    <h2>Works / 作品展厅</h2>
-    <div class="work-gallery">
-
-      <!-- 卡片 1 -->
-      <div class="work-card" onclick="playVideo('media/works/confession.mp4')">
-        <img src="media/posters/confession.jpg" alt="">
-        <div class="work-overlay">
-          <h3>《火光中的自白》</h3>
-          <p>入围阿根廷圣克鲁斯国际电影节</p>
-        </div>
-      </div>
-
-      <!-- 卡片 2 -->
-      <div class="work-card" onclick="playVideo('media/works/starbucks.mp4')">
-        <img src="media/posters/starbucks.jpg" alt="">
-        <div class="work-overlay">
-          <h3>星巴克广告</h3>
-          <p>品牌蓝 V + 千川爆款</p>
-        </div>
-      </div>
-
-      <!-- 如需更多卡片，复制 ↑ 结构 -->
-    </div>
-  </section>
-
-  <!-- █ 05 Clients -->
-  <section id="clients" data-aos="fade-up">
-    <h2>Clients / 合作客户</h2>
-    <div class="client-list">
-      <!-- 上传透明 PNG logo 后，把文字替换成 <img ...> -->
-      <span>Starbucks</span><span>阿里</span><span>美团</span><span>百雀羚</span>
-      <span>欧莱雅</span><span>哈药集团</span><span>蒙牛</span><span>罗技</span>
-    </div>
-  </section>
-
-  <!-- █ 06 CTA -->
-  <section id="cta" data-aos="fade-up">
-    <h2>🎥 想让我拍一场你心里的电影吗？</h2>
-    <a class="cta-btn" href="mailto:18691848329@163.com">立即联系</a>
-    <p>「像戈达尔一样拆解世界，像萨特一样质问自己。」</p>
-  </section>
-
-  <!-- █ Video Popup -->
-  <div id="video-popup" onclick="closeVideo()">
-    <video id="popup-video" controls></video>
   </div>
 
-  <!-- █ 背景音乐 -->
-  <audio id="bgm" src="media/bgm.flac"></audio>
+  <ul class="bullets">
+    <li>真实枪械改装，单镜头到底</li>
+    <li>机内 90% 自然光，零补光</li>
+    <li>剪辑保留空拍呼吸，观众“被迫在场”</li>
+  </ul>
 
-  <!-- █ 脚本：粒子 + AOS + 自定义 -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="js/main.js"></script>
+  <button onclick="playVideo('media/works/kill-a-stranger.mp4')">▶︎ 观看短片</button>
+</section>
+
+<!-- 05 Gallery -->
+<section id="works" data-aos="fade-up">
+  <h2>Works / 作品展厅</h2>
+  <div class="work-gallery">
+    <!-- 卡片示例 -->
+    <div class="work-card" onclick="playVideo('media/works/confession.mp4')">
+      <img src="media/posters/confession.jpg">
+      <div class="work-overlay">
+        <h3>《火光中的自白》</h3><p>阿根廷圣克鲁斯提名</p>
+      </div>
+    </div>
+    <div class="work-card" onclick="playVideo('media/works/starbucks.mp4')">
+      <img src="media/posters/starbucks.jpg">
+      <div class="work-overlay">
+        <h3>星巴克广告</h3><p>品牌蓝 V + 千川爆款</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 Testimonials -->
+<section id="testimonials" data-aos="fade-up">
+  <h2>Testimonials / 他人之言</h2>
+  <blockquote>
+    <p>“余俊辉把每一帧商业短片都拍成诗，像在清洁品牌灵魂。”</p>
+    <cite>—— 星巴克 品牌经理</cite>
+  </blockquote>
+  <blockquote>
+    <p>“《杀死陌生人》让评委席沉默 30 秒，这是奖杯背后的重量。”</p>
+    <cite>—— 戛纳 独立单元评委</cite>
+  </blockquote>
+</section>
+
+<!-- 07 Clients -->
+<section id="clients" data-aos="fade-up">
+  <h2>Clients / 合作客户</h2>
+  <div class="client-list">
+    <img src="media/clients/starbucks.png" alt>
+    <img src="media/clients/alibaba.png" alt>
+    <img src="media/clients/meituan.png" alt>
+    <img src="media/clients/meifubao.png" alt>
+    <img src="media/clients/loreal.png" alt>
+    <img src="media/clients/mengniu.png" alt>
+  </div>
+</section>
+
+<!-- 08 CTA -->
+<section id="cta" data-aos="fade-up">
+  <h2>🎥 想让我拍一场你心里的电影吗？</h2>
+  <a class="cta-btn" href="mailto:18691848329@163.com">立即联系</a>
+  <img class="wechat" src="media/wechat.png" alt="微信二维码">
+  <p>「像戈达尔一样拆解世界，像萨特一样质问自己。」</p>
+</section>
+
+<!-- Video 弹层 -->
+<div id="video-popup" onclick="closeVideo()">
+  <video id="popup-video" controls></video>
+</div>
+
+<audio id="bgm" src="media/bgm.flac"></audio>
+
+<!-- 脚本 -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
