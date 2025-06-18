@@ -1,66 +1,100 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>余俊辉 · 导演站</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <title>余俊辉 · Director's Cut</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- 开场：背景视频 + 双语宣言 + 进入按钮 -->
 <section id="opening">
   <video autoplay muted loop id="bg-video">
     <source src="media/bg.mp4" type="video/mp4">
   </video>
-  <h1>Confession is light, Killing is freedom.</h1>
-  <button onclick="startExperience()">Enter</button>
+  <div class="headline">
+    <h1>Confession is light,<br>Killing is freedom.</h1>
+    <h2>忏悔是光，杀戮是自由。</h2>
+    <button onclick="startExperience()">进入我的影像</button>
+  </div>
 </section>
 
+<!-- About：导演自述 -->
 <section id="about">
-  <img src="media/portrait.jpg" class="portrait">
-  <div class="bio">
-    <p>余俊辉，导演，编导，影像是我与世界的缓冲区。</p>
-    <p>五年实战，从广告到独立短片。</p>
-    <p>拍过星巴克、阿里、美团，也拍过人心里的废墟。</p>
-    <p>电影阅片量 3000+，精通从策划、拍摄到剪辑的全流程。</p>
-    <p>擅长带团队执行复杂项目，抗压，极致追求完成度。</p>
+  <div class="about-left">
+    <img src="media/portrait.jpg" alt="余俊辉肖像">
+  </div>
+  <div class="about-right">
+    <h2>余俊辉 Director / Filmmaker</h2>
+    <p>我用影像抵达真相。</p>
+    <p>我用怀疑撕开幻觉。</p>
+    <p>五年实践，三千部影片的沉思。</p>
+    <p>我拍星巴克与阿里，也拍我们心里杀死的陌生人。</p>
+    <p>我把广告拍成诗，把短片拍成证词。</p>
   </div>
 </section>
 
+<!-- Spotlight：杀死陌生人 -->
 <section id="spotlight">
-  <img src="media/posters/kill-a-stranger.jpg" class="spotlight-img">
-  <h2>《杀死陌生人》（2024）</h2>
-  <p>瑞典电影奖、上海国际短片周、戛纳国际电影节、纽约国际电影节最佳短片。</p>
+  <h2>Spotlight / 代表作</h2>
+  <img src="media/posters/kill-a-stranger.jpg" alt="杀死陌生人封面">
+  <h3>《杀死陌生人》（2024）</h3>
+  <div class="awards">
+    <span>🏆 瑞典电影奖最佳短片</span>
+    <span>🏆 上海国际短片周最佳导演</span>
+    <span>🏆 戛纳国际电影节最佳独立短片</span>
+    <span>🏆 纽约国际电影节最佳短片</span>
+  </div>
   <p>一部关于信任与杀戮的诗，一场关于真相与自我的审判。</p>
-  <button onclick="playVideo('media/works/kill-a-stranger.mp4')">点击观看</button>
+  <button onclick="playVideo('media/works/kill-a-stranger.mp4')">点击观看完整短片</button>
 </section>
 
+<!-- Works：其他作品墙 -->
 <section id="works">
-  <div class="work-card" onclick="playVideo('media/works/confession.mp4')">
-    <img src="media/posters/confession.jpg">
-    <h3>《火光中的自白》</h3>
-    <p>入围阿根廷圣克鲁斯国际电影节。</p>
-  </div>
-  <div class="work-card" onclick="playVideo('media/works/starbucks.mp4')">
-    <img src="media/posters/starbucks.jpg">
-    <h3>星巴克广告</h3>
-    <p>品牌蓝V + 千川爆款。</p>
+  <h2>Works / 作品展厅</h2>
+  <div class="work-gallery">
+    <div class="work-card" onclick="playVideo('media/works/confession.mp4')">
+      <img src="media/posters/confession.jpg">
+      <h3>《火光中的自白》</h3>
+      <p>入围阿根廷圣克鲁斯国际电影节</p>
+    </div>
+    <div class="work-card" onclick="playVideo('media/works/starbucks.mp4')">
+      <img src="media/posters/starbucks.jpg">
+      <h3>星巴克广告</h3>
+      <p>品牌蓝V + 千川爆款</p>
+    </div>
+    <!-- 可继续添加 -->
   </div>
 </section>
 
+<!-- Clients：合作客户 -->
 <section id="clients">
-  <span>星巴克</span><span>阿里</span><span>美团</span><span>百雀羚</span><span>欧莱雅</span><span>哈药集团</span><span>蒙牛</span><span>罗技</span>
+  <h2>Clients / 合作客户</h2>
+  <div class="client-list">
+    <span>Starbucks</span>
+    <span>阿里</span>
+    <span>美团</span>
+    <span>百雀羚</span>
+    <span>欧莱雅</span>
+    <span>哈药集团</span>
+    <span>蒙牛</span>
+    <span>罗技</span>
+  </div>
 </section>
 
+<!-- CTA：结尾联系 -->
 <section id="cta">
   <h2>🎥 想让我拍一场你心里的电影吗？</h2>
-  <a href="mailto:18691848329@163.com">立即联系</a>
+  <a href="mailto:18691848329@163.com" class="cta-btn">立即联系</a>
   <p>「像戈达尔一样拆解世界，像萨特一样质问自己。」</p>
 </section>
 
+<!-- Video 浮层 -->
 <div id="video-popup" onclick="closeVideo()">
   <video controls id="popup-video"></video>
 </div>
 
+<!-- 背景音乐 -->
 <audio id="bgm" src="media/bgm.flac"></audio>
 
 <script src="js/main.js"></script>
