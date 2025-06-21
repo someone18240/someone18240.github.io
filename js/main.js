@@ -45,6 +45,14 @@ AOS.init({
   once: true        // 只触发一次
 });
 
+// 显示 / 隐藏返回顶部按钮
+window.addEventListener('scroll',()=>{
+  const btn = $('#top-btn');
+  if(btn){
+    btn.classList.toggle('show', window.scrollY > 300);
+  }
+});
+
 /* =========================================================
    4. 粒子背景初始化（红 + 青 混色）
 ========================================================= */

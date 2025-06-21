@@ -22,6 +22,15 @@
 
 <body>
 <div id="particles-js"></div>
+<nav id="navbar">
+  <a href="#opening">首页</a>
+  <a href="#about">关于</a>
+  <a href="#timeline">年表</a>
+  <a href="#spotlight">代表作</a>
+  <a href="#works">作品</a>
+  <a href="#clients">客户</a>
+  <a href="#cta">联系</a>
+</nav>
 
 <!-- 01 Hero -->
 <section id="opening">
@@ -43,7 +52,7 @@
   <video class="about-broll" src="media/broll.mp4" autoplay muted loop></video>
 
   <div class="about-left">
-    <img src="media/portrait.jpg" alt="余俊辉肖像">
+  <img src="media/portrait.jpg" alt="余俊辉肖像" loading="lazy">
   </div>
   <div class="about-right">
     <h2>余俊辉  Director / Filmmaker</h2>
@@ -70,7 +79,7 @@
 <!-- 04 Spotlight -->
 <section id="spotlight" data-aos="fade-up">
   <h2>Spotlight / 代表作</h2>
-  <img class="spot-img" src="media/posters/kill-a-stranger.jpg" alt="">
+  <img class="spot-img" src="media/posters/kill-a-stranger.jpg" alt="" loading="lazy">
   <h3>《杀死陌生人》 (2024)</h3>
 
   <ul class="awards-list">
@@ -87,9 +96,9 @@
   <div class="glide bts-slider">
     <div data-glide-el="track" class="glide__track">
       <ul class="glide__slides">
-        <li class="glide__slide"><img src="media/behind/ksmr1.jpg"></li>
-        <li class="glide__slide"><img src="media/behind/ksmr2.jpg"></li>
-        <li class="glide__slide"><img src="media/behind/ksmr3.jpg"></li>
+          <li class="glide__slide"><img src="media/behind/ksmr1.jpg" loading="lazy"></li>
+          <li class="glide__slide"><img src="media/behind/ksmr2.jpg" loading="lazy"></li>
+          <li class="glide__slide"><img src="media/behind/ksmr3.jpg" loading="lazy"></li>
       </ul>
     </div>
   </div>
@@ -109,13 +118,13 @@
   <div class="work-gallery">
     <!-- 卡片示例 -->
     <div class="work-card" onclick="playVideo('media/works/confession.mp4')">
-      <img src="media/posters/confession.jpg">
+      <img src="media/posters/confession.jpg" loading="lazy">
       <div class="work-overlay">
         <h3>《火光中的自白》</h3><p>阿根廷圣克鲁斯提名</p>
       </div>
     </div>
     <div class="work-card" onclick="playVideo('media/works/starbucks.mp4')">
-      <img src="media/posters/starbucks.jpg">
+      <img src="media/posters/starbucks.jpg" loading="lazy">
       <div class="work-overlay">
         <h3>星巴克广告</h3><p>品牌蓝 V + 千川爆款</p>
       </div>
@@ -155,9 +164,11 @@
 <section id="cta" data-aos="fade-up">
   <h2>🎥 想让我拍一场你心里的电影吗？</h2>
   <a class="cta-btn" href="mailto:18691848329@163.com">立即联系</a>
-  <img class="wechat" src="media/wechat.png" alt="微信二维码">
+  <img class="wechat" src="media/wechat.png" alt="微信二维码" loading="lazy">
   <p>「像戈达尔一样拆解世界，像萨特一样质问自己。」</p>
 </section>
+
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <!-- Video 弹层 -->
 <div id="video-popup" onclick="closeVideo()">
